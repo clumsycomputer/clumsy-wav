@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {  
+    "strict": true,
+    "strictNullChecks": true,
+    "noUncheckedIndexedAccess": true,    
+    "module": "commonjs",
+    "target": "ES2019",
+    "moduleResolution": "node",    
+    "outDir": "./package",
+    "declaration": true,
+    "declarationDir": "./package/types",
+  },
+  "include": ["source/**/*"],
+  "exclude": ["node_modules"]
+}

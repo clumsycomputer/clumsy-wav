@@ -1,0 +1,23 @@
+{
+  "name": "clumsy-wav",
+  "version": "1.0.0",
+  "description": "a function for generating .wav file data",
+  "main": "./package/index.js",
+  "types": "./package/types/index.js",
+  "license": "Beerware",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clumsycomputer/clumsy-wav"
+  },
+  "dependencies": {
+    "typescript": "^4.8.4"
+  },
+  "scripts": {
+    "buildPackage": "tsc"
+  },
+  "keywords": [
+    "audio",
+    "wav",
+    "typescript"
+  ]
+}
