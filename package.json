@@ -1,7 +1,7 @@
 {
   "name": "clumsy-wav",
-  "version": "1.0.0-alpha.0",
-  "description": "a function for generating .wav file data",
+  "version": "1.0.0-alpha.1",
+  "description": "functions for generating .wav file data",
   "main": "./package/index.js",
   "types": "./package/types/index.js",
   "license": "Beerware",

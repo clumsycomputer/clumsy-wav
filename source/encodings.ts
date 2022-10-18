@@ -1,4 +1,4 @@
-export type WavType = "ieee" | "pcm";
+export type WavType = "float" | "pcm";
 
 export type SampleRate = 44100 | 48000 | 192000;
 
