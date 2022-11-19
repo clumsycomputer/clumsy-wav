@@ -5,4 +5,4 @@ export {
   MonoChannelsData,
   StereoChannelsData,
 } from "./encodings";
-export * from "./getWavData";
+export * from "./getWavBuffer";

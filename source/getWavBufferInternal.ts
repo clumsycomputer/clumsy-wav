@@ -5,7 +5,9 @@ import {
   WriteChannelsDataFunction,
 } from "./encodings";
 
-export interface GetWavDataInternalApi<SomeChannelsData extends ChannelsData> {
+export interface GetWavBufferInternalApi<
+  SomeChannelsData extends ChannelsData
+> {
   sampleFormat: number;
   bitDepth: number;
   sampleRate: SampleRate;
@@ -14,8 +16,8 @@ export interface GetWavDataInternalApi<SomeChannelsData extends ChannelsData> {
   writeChannelSampleData: WriteChannelSampleDataFunction;
 }
 
-export function getWavDataInternal<SomeChannelsData extends ChannelsData>(
-  api: GetWavDataInternalApi<SomeChannelsData>
+export function getWavBufferInternal<SomeChannelsData extends ChannelsData>(
+  api: GetWavBufferInternalApi<SomeChannelsData>
 ): ArrayBuffer {
   const {
     bitDepth,

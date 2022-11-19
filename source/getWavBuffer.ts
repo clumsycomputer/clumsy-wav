@@ -7,57 +7,57 @@ import {
   WriteChannelsDataFunction,
 } from "./encodings";
 import {
-  getWavDataInternal,
-  GetWavDataInternalApi,
-} from "./getWavDataInternal";
+  getWavBufferInternal,
+  GetWavBufferInternalApi,
+} from "./getWavBufferInternal";
 
-export function getWavData(
+export function getWavBuffer(
   sampleRate: SampleRate,
   channelsData: ChannelsData,
   wavType?: WavType
 ) {
-  return _getWavData({
+  return _getWavBuffer({
     sampleRate,
     channelsData,
     wavType,
   });
 }
 
-export function getFloatWavData(
+export function getFloatWavBuffer(
   sampleRate: SampleRate,
   channelsData: ChannelsData
 ) {
-  return _getWavData({
+  return _getWavBuffer({
     channelsData,
     sampleRate,
     wavType: "float",
   });
 }
 
-export function getPcmWavData(
+export function getPcmWavBuffer(
   sampleRate: SampleRate,
   channelsData: ChannelsData
 ) {
-  return _getWavData({
+  return _getWavBuffer({
     channelsData,
     sampleRate,
     wavType: "pcm",
   });
 }
 
-export interface _GetWavDataApi
+export interface _GetWavBufferApi
   extends Pick<
-    GetWavDataInternalApi<ChannelsData>,
+    GetWavBufferInternalApi<ChannelsData>,
     "sampleRate" | "channelsData"
   > {
   wavType?: WavType;
 }
 
-export function _getWavData(api: _GetWavDataApi) {
+export function _getWavBuffer(api: _GetWavBufferApi) {
   const { wavType, channelsData, sampleRate } = api;
-  const _wavType: WavType = wavType || "float";
+  const _wavType: WavType = wavType ?? "float";
   const getSpecifiedWavData =
-    _wavType === "float" ? _getFloatWavData : _getPcmWavData;
+    _wavType === "float" ? _getFloatWavBuffer : _getPcmWavBuffer;
   return channelsData.length === 1
     ? getSpecifiedWavData({
         channelsData,
@@ -73,15 +73,15 @@ export function _getWavData(api: _GetWavDataApi) {
 
 interface _GetFloatWavDataApi<SomeChannelsData extends ChannelsData>
   extends Pick<
-    GetWavDataInternalApi<SomeChannelsData>,
+    GetWavBufferInternalApi<SomeChannelsData>,
     "sampleRate" | "channelsData" | "writeChannelsData"
   > {}
 
-function _getFloatWavData<SomeChannelsData extends ChannelsData>(
+function _getFloatWavBuffer<SomeChannelsData extends ChannelsData>(
   api: _GetFloatWavDataApi<SomeChannelsData>
 ) {
   const { writeChannelsData, channelsData, sampleRate } = api;
-  return getWavDataInternal({
+  return getWavBufferInternal({
     writeChannelsData,
     channelsData,
     sampleRate,
@@ -95,14 +95,15 @@ function _getFloatWavData<SomeChannelsData extends ChannelsData>(
 
 interface _GetPcmWavDataApi<SomeChannelsData extends ChannelsData>
   extends Pick<
-    GetWavDataInternalApi<SomeChannelsData>,
+    GetWavBufferInternalApi<SomeChannelsData>,
     "sampleRate" | "channelsData" | "writeChannelsData"
   > {}
-function _getPcmWavData<SomeChannelsData extends ChannelsData>(
+
+function _getPcmWavBuffer<SomeChannelsData extends ChannelsData>(
   api: _GetPcmWavDataApi<SomeChannelsData>
 ) {
   const { writeChannelsData, channelsData, sampleRate } = api;
-  return getWavDataInternal({
+  return getWavBufferInternal({
     writeChannelsData,
     channelsData,
     sampleRate,
